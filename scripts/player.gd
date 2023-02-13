@@ -1,8 +1,15 @@
 extends Area2D
 
-func _process(_delta):
-	$Animation.play()
+var screen_size
+export var speed = 400
 
-func start(_pos):
-	show()
-	$Collision.disabled = false
+func _process(_delta):
+	var velocity = Vector2.ZERO
+	velocity = velocity.normalized() * speed
+	$Animation.play()
+	$Animation.animation = 'walk'
+
+func _ready():
+	screen_size = get_viewport_rect().size
+	
+	
