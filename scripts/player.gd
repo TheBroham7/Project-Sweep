@@ -19,11 +19,14 @@ func _on_HUD_block():
 	$AnimationTimer.start()
 	$Animation.play()
 	$Animation.animation = "block"
+	$Block.play()
+	
 	
 func _on_HUD_swing():
 	$AnimationTimer.start()
 	$Animation.play()
 	$Animation.animation = "swing"
+	$Swing.play()
 	
 func _on_Player_body_entered(body):
 	if $Animation.animation == 'walk':
