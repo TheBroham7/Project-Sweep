@@ -16,14 +16,15 @@ func _ready():
 	screen_size = get_viewport_rect()
 
 func _on_HUD_block():
+	$AnimationTimer.start()
 	$Animation.play()
 	$Animation.animation = "block"
 	
 func _on_HUD_swing():
+	$AnimationTimer.start()
 	$Animation.play()
 	$Animation.animation = "swing"
 	
-
 func _on_Player_body_entered(body):
 	if $Animation.animation == 'walk':
 		hide()
@@ -31,3 +32,7 @@ func _on_Player_body_entered(body):
 		$CollisionShape2D.set_deferred("disabled", true)
 	elif $Animation.animation == 'swing':
 		emit_signal("strike")
+
+func _on_AnimationTimer_timeout():
+	$Animation.play()
+	$Animation.animation = 'walk'

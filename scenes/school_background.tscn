@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/background/lockers.png" type="Texture" id=1]
 [ext_resource path="res://assets/background/essay.png" type="Texture" id=2]
@@ -11,18 +11,6 @@
 [ext_resource path="res://assets/background/trash_can.png" type="Texture" id=9]
 [ext_resource path="res://assets/background/poster_3.png" type="Texture" id=10]
 [ext_resource path="res://scripts/SchoolBackground.gd" type="Script" id=11]
-[ext_resource path="res://scenes/player.tscn" type="PackedScene" id=12]
-[ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=13]
-
-[sub_resource type="Curve2D" id=1]
-_data = {
-"points": PoolVector2Array(  )
-}
-
-[sub_resource type="Curve2D" id=2]
-_data = {
-"points": PoolVector2Array(  )
-}
 
 [node name="SchoolBackground" type="ParallaxBackground"]
 script = ExtResource( 11 )
@@ -268,20 +256,3 @@ margin_top = 194.0
 margin_right = 81.0
 margin_bottom = 213.0
 color = Color( 0.278431, 0.278431, 0.278431, 1 )
-
-[node name="HUD" parent="." instance=ExtResource( 13 )]
-
-[node name="Player" parent="." instance=ExtResource( 12 )]
-
-[node name="MobPath" type="Path2D" parent="."]
-curve = SubResource( 1 )
-
-[node name="MobSpawnLocation" type="Path2D" parent="MobPath"]
-curve = SubResource( 2 )
-
-[node name="MobTimer" type="Timer" parent="."]
-
-[connection signal="block" from="HUD" to="Player" method="_on_HUD_block"]
-[connection signal="swing" from="HUD" to="Player" method="_on_HUD_swing"]
-[connection signal="body_entered" from="Player" to="Player" method="_on_Player_body_entered"]
-[connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
