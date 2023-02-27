@@ -1,6 +1,5 @@
 extends Area2D
 
-signal strike
 signal dead
 signal update_health
 signal game_over
@@ -10,15 +9,13 @@ var screen_size
 var current_action = 'walk'
 export var speed = 200
 
-
-
 func _process(_delta):
-	$Animation.animation = 'walk'
-	$Animation.play()
-
+	pass
 
 func _ready():
 	screen_size = get_viewport_rect()
+	$Animation.animation = 'walk'
+	$Animation.play()
 	
 func _on_Player_body_entered(body):
 	if current_action == 'walk':
