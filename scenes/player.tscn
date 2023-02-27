@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://assets/janitor/janitor_idle.png" type="Texture" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://assets/music/weapon_swing.wav" type="AudioStream" id=11]
 [ext_resource path="res://assets/music/weapon_block.wav" type="AudioStream" id=12]
 [ext_resource path="res://assets/music/gameover.wav" type="AudioStream" id=13]
+[ext_resource path="res://assets/music/enemy_died.wav" type="AudioStream" id=14]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -67,6 +68,9 @@ stream = ExtResource( 12 )
 
 [node name="GameOver" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 13 )
+
+[node name="EnemyDied" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
 
 [connection signal="dead" from="." to="." method="_on_Player_dead"]
 [connection signal="timeout" from="AnimationTimer" to="." method="_on_AnimationTimer_timeout"]

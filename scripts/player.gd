@@ -27,6 +27,7 @@ func _on_Player_body_entered(body):
 		if player_health <= 0:
 			emit_signal("dead")
 	elif current_action == "swing":
+		$EnemyDied.play()
 		body.queue_free()
 	elif current_action == 'block':
 		pass
@@ -59,6 +60,13 @@ func _on_weapon_buttons_broom():
 	pass
 
 func _on_Player_dead():
+	$GameOver.play()
+	emit_signal("game_over")
 	hide()
+	
+func _on_power_ups_first_aid():
+	player_health += 1
+	emit_signal("update_health", player_health)
+	
 	
 
