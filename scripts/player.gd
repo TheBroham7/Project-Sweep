@@ -3,7 +3,7 @@ extends Area2D
 signal strike
 signal dead
 signal update_health
-
+signal game_over
 
 var player_health = 5
 var screen_size
@@ -24,7 +24,7 @@ func _on_Player_body_entered(body):
 	if current_action == 'walk':
 		player_health -= 1
 		emit_signal("update_health", player_health)
-		if player_health == 0:
+		if player_health <= 0:
 			emit_signal("dead")
 	elif current_action == "swing":
 		body.queue_free()
@@ -60,8 +60,5 @@ func _on_weapon_buttons_broom():
 
 func _on_Player_dead():
 	hide()
+	
 
-
-func _on_power_ups_first_aid():
-	player_health = 5
-	emit_signal("update_health", player_health)

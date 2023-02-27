@@ -58,8 +58,8 @@ text = "User Instructions:
 press p to continue playing!"
 
 [connection signal="body_entered" from="Player" to="Player" method="_on_Player_body_entered"]
-[connection signal="dead" from="Player" to="Player" method="_on_Player_dead"]
-[connection signal="strike" from="Player" to="." method="_on_Player_strike"]
+[connection signal="game_over" from="Player" to="." method="_on_Player_game_over"]
+[connection signal="game_over" from="Player" to="SchoolBackground" method="_on_Player_game_over"]
 [connection signal="update_health" from="Player" to="HUD" method="_on_Player_update_health"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
 [connection signal="first_aid" from="power_ups" to="Player" method="_on_power_ups_first_aid"]

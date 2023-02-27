@@ -10,4 +10,6 @@ func _on_MobTimer_timeout():
 	var newRat= rat.instance()
 	newRat.position = $MobSpawnPoint.position
 	add_child(newRat)
-	
+
+func _on_Player_game_over():
+	$MobTimer.stop()

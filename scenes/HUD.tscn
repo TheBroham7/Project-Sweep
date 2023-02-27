@@ -5,14 +5,17 @@
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 3 )
 
-[node name="HealthLabel" type="Label" parent="."]
+[node name="HealthBar" type="Position2D" parent="."]
+position = Vector2( -180, 650 )
+
+[node name="HealthLabel" type="Label" parent="HealthBar"]
 margin_left = 389.0
 margin_top = 2.0
 margin_right = 477.0
 margin_bottom = 16.0
 text = "Health: "
 
-[node name="HealthNumber" type="Label" parent="."]
+[node name="HealthNumber" type="Label" parent="HealthBar"]
 margin_left = 446.0
 margin_top = 2.0
 margin_right = 534.0
