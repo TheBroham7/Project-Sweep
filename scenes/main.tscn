@@ -35,15 +35,28 @@ layer = 100
 
 [node name="Pause" type="Control" parent="CanvasLayer"]
 pause_mode = 2
-visible = false
 margin_right = 478.0
-margin_bottom = 2416.0
+margin_bottom = 4102.0
 script = ExtResource( 7 )
 
 [node name="Background" type="ColorRect" parent="CanvasLayer/Pause"]
 margin_right = 506.0
-margin_bottom = 2410.0
+margin_bottom = 4165.0
 color = Color( 0.0470588, 0.392157, 0.027451, 0.792157 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Pause/Background"]
+margin_right = 525.0
+margin_bottom = 4181.0
+tab_size = 1
+text = "User Instructions: 
+
+> Click the broom button to attack.
+> Click the dustpan to defend. 
+> Clcik  the first aid kit to power up and replenish health. 
+> Click the sponge for a power up. 
+
+press p to resume game!
+"
 
 [connection signal="body_entered" from="Player" to="SchoolBackground" method="_on_Player_body_entered"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
