@@ -1,8 +1,6 @@
 extends Node2D
 
-var timer = 0
-export var spawnTime = 4
-
+export (float) var spawnTime = rand_range(5.0, 30.0)
 var rat = preload("res://scenes/Rat.tscn")
 
 func _ready():
@@ -12,3 +10,4 @@ func _on_MobTimer_timeout():
 	var newRat= rat.instance()
 	newRat.position = $MobSpawnPoint.position
 	add_child(newRat)
+	
