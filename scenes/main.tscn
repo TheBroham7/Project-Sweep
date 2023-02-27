@@ -51,15 +51,17 @@ margin_right = 476.0
 margin_bottom = 4142.0
 text = "User Instructions: 
 
-> Use the broom to attack.
-> Use the dustpan to defend. 
-> Use the sponge as a power up. > Use the first aid kit to heal. 
+> Click the broom to strike.
+> Click  the dustpan to dodge.
+> Use the sponge to wipe out all enemies. 
+> Use the first aid kit to regain some health. 
 
 press p to continue playing!"
 
 [connection signal="body_entered" from="Player" to="Player" method="_on_Player_body_entered"]
 [connection signal="game_over" from="Player" to="." method="_on_Player_game_over"]
 [connection signal="game_over" from="Player" to="SchoolBackground" method="_on_Player_game_over"]
+[connection signal="game_over" from="Player" to="HUD" method="_on_Player_game_over"]
 [connection signal="update_health" from="Player" to="HUD" method="_on_Player_update_health"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
 [connection signal="first_aid" from="power_ups" to="Player" method="_on_power_ups_first_aid"]

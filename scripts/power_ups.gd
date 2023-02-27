@@ -6,22 +6,28 @@ var spongecount = 3
 var firstaidcount = 3
 
 func _ready():
-	$FirstAid/FirstAidCount.text = String(spongecount)
-	$Sponge/SpongeCount.text = String(firstaidcount)
+	$FirstAidCount.text = String(spongecount)
+	$SpongeCount.text = String(firstaidcount)
+	$FirstAidCount.add_color_override("font_color", Color.white)
+	$SpongeCount.add_color_override("font_color", Color.white)
 	
 func _on_FirstAid_pressed():
 	if firstaidcount == 0:
 		return
+	$PowerUp.play()
 	emit_signal("first_aid")
 	firstaidcount -= 1
+	$FirstAidCount.text = str(firstaidcount)
 	if firstaidcount == 0:
 		$FirstAid.modulate = Color(255, 0, 0)
 
 func _on_Sponge_pressed():
 	if spongecount == 0:
 		return
+	$PowerUp.play()
 	emit_signal("sponge")
 	spongecount -= 1
+	$SpongeCount.text = str(spongecount)
 	if spongecount == 0:
 		$Sponge.modulate = Color(255, 0, 0)
 

@@ -21,3 +21,9 @@ margin_top = 2.0
 margin_right = 534.0
 margin_bottom = 16.0
 text = "5"
+
+[node name="Distance" type="Label" parent="."]
+margin_right = 74.0
+margin_bottom = 39.0
+text = "0
+"

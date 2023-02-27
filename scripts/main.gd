@@ -12,4 +12,8 @@ func _on_MobTimer_timeout():
 	add_child(newRat)
 
 func _on_Player_game_over():
+	set_process(false)
 	$MobTimer.stop()
+
+func _process(_delta):
+	$HUD.update_score()
