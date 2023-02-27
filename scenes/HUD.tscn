@@ -5,7 +5,16 @@
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 3 )
 
-[node name="ScoreLabel" type="Label" parent="."]
-margin_right = 40.0
-margin_bottom = 14.0
-text = "Distance: 0 M"
+[node name="HealthLabel" type="Label" parent="."]
+margin_left = 389.0
+margin_top = 2.0
+margin_right = 477.0
+margin_bottom = 16.0
+text = "Health: "
+
+[node name="HealthNumber" type="Label" parent="."]
+margin_left = 446.0
+margin_top = 2.0
+margin_right = 534.0
+margin_bottom = 16.0
+text = "5"

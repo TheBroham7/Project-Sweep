@@ -17,6 +17,7 @@ script = ExtResource( 4 )
 [node name="HUD" parent="." instance=ExtResource( 3 )]
 
 [node name="MobTimer" type="Timer" parent="."]
+wait_time = 2.0
 
 [node name="power_ups" parent="." instance=ExtResource( 6 )]
 position = Vector2( 24, 136 )
@@ -29,9 +30,10 @@ scale = Vector2( 0.75, 0.75 )
 [node name="MobSpawnPoint" type="Position2D" parent="."]
 position = Vector2( 238, -40 )
 
-[connection signal="stop" from="SchoolBackground" to="Player" method="_on_SchoolBackground_stop"]
-[connection signal="body_entered" from="Player" to="SchoolBackground" method="_on_Player_body_entered"]
+[connection signal="body_entered" from="Player" to="Player" method="_on_Player_body_entered"]
+[connection signal="dead" from="Player" to="Player" method="_on_Player_dead"]
 [connection signal="strike" from="Player" to="." method="_on_Player_strike"]
+[connection signal="update_health" from="Player" to="HUD" method="_on_Player_update_health"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
 [connection signal="block" from="weapon_buttons" to="Player" method="_on_weapon_buttons_block"]
 [connection signal="broom" from="weapon_buttons" to="Player" method="_on_weapon_buttons_broom"]
