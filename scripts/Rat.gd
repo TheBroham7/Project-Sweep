@@ -1,9 +1,16 @@
 extends RigidBody2D
 
+var rat_health = 3
+var velocity = Vector2(0, 200)
+
 func _ready():
-	$AnimatedSprite.playing = true
-	var mob_types = $AnimatedSprite.frames.get_animation_names()
-	$AnimatedSprite.animation = mob_types[randi() % mob_types.size()]
+	pass
+
+func _process(delta):
+	global_position += velocity * delta
 
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
+
+
+
