@@ -7,7 +7,7 @@ signal update_health
 
 var player_health = 5
 var screen_size
-var current_action
+var current_action = 'walk'
 export var speed = 200
 
 
@@ -60,3 +60,8 @@ func _on_weapon_buttons_broom():
 
 func _on_Player_dead():
 	hide()
+
+
+func _on_power_ups_first_aid():
+	player_health = 5
+	emit_signal("update_health", player_health)
