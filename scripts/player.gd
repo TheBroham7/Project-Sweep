@@ -7,7 +7,7 @@ signal game_over
 
 var player_health = 5
 var screen_size
-var current_action
+var current_action = 'walk'
 export var speed = 200
 
 
@@ -60,6 +60,5 @@ func _on_weapon_buttons_broom():
 
 func _on_Player_dead():
 	hide()
-	emit_signal("game_over")
-	$GameOver.play()
 	
+
