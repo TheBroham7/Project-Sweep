@@ -8,3 +8,4 @@ script = ExtResource( 3 )
 [node name="ScoreLabel" type="Label" parent="."]
 margin_right = 40.0
 margin_bottom = 14.0
+text = "Distance: 0 M"
