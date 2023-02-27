@@ -16,7 +16,7 @@ animations = [ {
 radius = 18.9999
 height = 66.0002
 
-[node name="rat" type="RigidBody2D"]
+[node name="rat" type="RigidBody2D" groups=["rats"]]
 position = Vector2( 240, 0 )
 rotation = 1.56844
 gravity_scale = 0.0

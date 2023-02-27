@@ -62,6 +62,8 @@ press p to continue playing!"
 [connection signal="strike" from="Player" to="." method="_on_Player_strike"]
 [connection signal="update_health" from="Player" to="HUD" method="_on_Player_update_health"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
+[connection signal="first_aid" from="power_ups" to="Player" method="_on_power_ups_first_aid"]
+[connection signal="sponge" from="power_ups" to="power_ups" method="_on_power_ups_sponge"]
 [connection signal="block" from="weapon_buttons" to="Player" method="_on_weapon_buttons_block"]
 [connection signal="broom" from="weapon_buttons" to="Player" method="_on_weapon_buttons_broom"]
 [connection signal="swing" from="weapon_buttons" to="Player" method="_on_weapon_buttons_swing"]
