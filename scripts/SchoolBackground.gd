@@ -10,3 +10,6 @@ func _ready():
 func _process(delta):
 	scroll_offset.y += scrolling_speed * delta
 
+func _on_Player_game_over():
+	scrolling_speed = 0
+	$Music.stop()
