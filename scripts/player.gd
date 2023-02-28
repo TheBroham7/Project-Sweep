@@ -19,6 +19,7 @@ func _ready():
 	
 func _on_Player_body_entered(body):
 	if current_action == 'walk':
+		$Damage.play()
 		player_health -= 1
 		emit_signal("update_health", player_health)
 		if player_health <= 0:
