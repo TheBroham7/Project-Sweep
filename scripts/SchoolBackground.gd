@@ -13,3 +13,6 @@ func _process(delta):
 func _on_Player_game_over():
 	scrolling_speed = 0
 	$Music.stop()
+
+func _on_HUD_stop_scroll():
+	scrolling_speed = 0

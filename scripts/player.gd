@@ -50,10 +50,6 @@ func _on_weapon_buttons_block():
 	current_action = 'block'
 	$Block.play()
 
-func _on_SchoolBackground_stop():
-	pass
-
-
 func _on_weapon_buttons_broom():
 	pass
 
@@ -65,6 +61,4 @@ func _on_Player_dead():
 func _on_power_ups_first_aid():
 	player_health += 1
 	emit_signal("update_health", player_health)
-	
-	
 
