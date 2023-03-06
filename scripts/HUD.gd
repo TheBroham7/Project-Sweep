@@ -3,7 +3,7 @@ extends CanvasLayer
 signal boss_spawn
 signal stop_scroll
 
-var score_increase = true
+var distance_increase = true
 
 var distance = 0
 
@@ -17,12 +17,12 @@ func _on_Player_update_health(health):
 	$HealthBar/ColorRect/HealthNumber.text = str(health)
 
 func update_score():
-	if score_increase:
+	if distance_increase:
 		distance += 1
 
-	if distance == 200:
+	if distance == 200 and distance_increase == true:
 			emit_signal("boss_spawn")
 			emit_signal("stop_scroll")
-			score_increase = false
+			distance_increase = false
 	$ColorRect/Distance.text = str(distance) + "M"
 	
