@@ -1,4 +1,4 @@
-extends Area2D
+extends RigidBody2D
 
 var projectile_scene =  preload("res://scenes/book_projectile.tscn")
 
@@ -9,16 +9,19 @@ var forward = true
 
 func _ready():
 	$WaitTime.start()
+	var boss_health = 3
 
 func _process(delta):
 	if forward:
 		global_position += velocity * delta
-		if global_position.y >= 410:
+		if global_position.y >= 460:
 			forward = false
 	else:
 		global_position += Vector2(0.0, rand_range(-50.0, -100.0)) * delta
 		if global_position.y <= 96:
 			forward = true
+
+
 	
 func _on_BossProjectileTimer_timeout():
 	# Spawn boss projectile every 4 seconds 
@@ -33,7 +36,11 @@ func spawn_projectile():
 		projectile.position = $Position2.position
 		projectile_spawn = 1
 	add_child(projectile)
+	if forward == false:
+		projectile.velocity.y += 100
+	
 
 func _on_WaitTime_timeout():
 	$BossProjectileTimer.start()
 	spawn_projectile()
+
