@@ -9,6 +9,7 @@ var current_action = 'walk'
 export var speed = 200
 var boss_is_spawned = false
 var mob_health = 1
+var rat_push_back = rand_range(100.0, 500.0)
 
 
 func _ready():
@@ -18,6 +19,11 @@ func _ready():
 	
 func _on_Player_body_entered(body):
 	if current_action == 'walk':
+		body.ratpushback = true
+		#$ratPushBackTimer.start()
+		#body.velocity -= Vector2(0.0, rat_push_back) 
+		#$_on_ratPushBackTimer_timeout(body)
+		#body.global_position *= -0.001
 		player_health -= 1
 		$Animation.modulate = Color(255, 0, 0)
 		$ColorTimer.start()
@@ -26,6 +32,7 @@ func _on_Player_body_entered(body):
 			emit_signal("dead")
 			hide()
 	elif current_action == "swing":
+		#body.velocity = Vector2(0.0, 0.0)
 		$EnemyDied.play()
 		body.queue_free()
 	elif current_action == 'block':
@@ -66,3 +73,7 @@ func _on_main_boss_is_spawned():
 
 func _on_ColorTimer_timeout():
 	$Animation.modulate = Color("ffffff")
+
+
+#func _on_ratPushBackTimer_timeout(body):
+	#body.velocity = Vector2(0.0, rand_range(175.0, 500.0))
