@@ -1,4 +1,4 @@
-
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://assets/janitor/janitor_idle.png" type="Texture" id=2]
@@ -12,8 +12,8 @@
 [ext_resource path="res://assets/janitor/janitor_swing_3.png" type="Texture" id=10]
 [ext_resource path="res://assets/music/weapon_swing.wav" type="AudioStream" id=11]
 [ext_resource path="res://assets/music/weapon_block.wav" type="AudioStream" id=12]
+[ext_resource path="res://assets/music/damage_dealt.wav" type="AudioStream" id=13]
 [ext_resource path="res://assets/music/enemy_died.wav" type="AudioStream" id=14]
-[ext_resource path="res://assets/music/damage_dealt.wav" type="AudioStream" id=15]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -69,6 +69,14 @@ stream = ExtResource( 12 )
 [node name="EnemyDied" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 14 )
 
+[node name="ColorTimer" type="Timer" parent="."]
+wait_time = 0.3
+
+[node name="Damage" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+
+[node name="broom_spawn" type="Position2D" parent="."]
+position = Vector2( -433.333, -435.556 )
 
 [connection signal="timeout" from="AnimationTimer" to="." method="_on_AnimationTimer_timeout"]
 [connection signal="timeout" from="ColorTimer" to="." method="_on_ColorTimer_timeout"]
