@@ -13,7 +13,6 @@
 [ext_resource path="res://assets/music/weapon_swing.wav" type="AudioStream" id=11]
 [ext_resource path="res://assets/music/weapon_block.wav" type="AudioStream" id=12]
 [ext_resource path="res://assets/music/enemy_died.wav" type="AudioStream" id=14]
-[ext_resource path="res://assets/music/damage_dealt.wav" type="AudioStream" id=15]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -69,6 +68,4 @@ stream = ExtResource( 12 )
 [node name="EnemyDied" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 14 )
 
-
 [connection signal="timeout" from="AnimationTimer" to="." method="_on_AnimationTimer_timeout"]
-[connection signal="timeout" from="ColorTimer" to="." method="_on_ColorTimer_timeout"]
