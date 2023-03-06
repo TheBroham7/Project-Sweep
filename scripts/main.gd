@@ -23,6 +23,8 @@ func _process(_delta):
 func _on_HUD_boss_spawn():
 	# Spawn boss
 	$MobTimer.stop()
+	$SchoolBackground/Music.stop()
+	$SchoolBackground/BossMusic.play()
 	get_tree().call_group("rats", "queue_free")
 	var boss = classroom_boss.instance()
 	boss.position = $BossSpawnPoint.position

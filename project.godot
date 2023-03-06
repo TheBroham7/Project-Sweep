@@ -11,13 +11,17 @@ config_version=4
 [application]
 
 config/name="project_sweep"
-run/main_scene="res://scenes/main.tscn"
+run/main_scene="res://scenes/title_screen.tscn"
 
 [display]
 
 window/size/width=480
 window/size/height=720
 window/dpi/allow_hidpi=true
+
+[global]
+
+main=false
 
 [gui]
 

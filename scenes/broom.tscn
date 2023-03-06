@@ -4,6 +4,7 @@
 [ext_resource path="res://scripts/broom.gd" type="Script" id=2]
 
 [node name="Sprite" type="Sprite"]
+position = Vector2( 246, 246 )
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
