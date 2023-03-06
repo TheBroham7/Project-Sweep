@@ -20,7 +20,8 @@ func _ready():
 	$Animation.play()
 func _on_Player_body_entered(body):
 	if current_action == 'walk':
-		body.pushback = true
+		body.queue_free()
+		#body.pushback = true
 		#$ratPushBackTimer.start()
 		#body.velocity -= Vector2(0.0, rat_push_back) 
 		#$_on_ratPushBackTimer_timeout(body)
@@ -40,6 +41,7 @@ func _on_Player_body_entered(body):
 		$EnemyDied.play()
 		body.queue_free()
 	elif current_action == 'block':
+		body.pushback = true
 		if boss_is_spawned == true:
 			body.queue_free()
 
