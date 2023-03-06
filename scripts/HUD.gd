@@ -20,7 +20,7 @@ func update_score():
 	if distance_increase:
 		distance += 1
 
-	if distance == 200 and distance_increase == true:
+	if distance == 3500 and distance_increase == true:
 			emit_signal("boss_spawn")
 			emit_signal("stop_scroll")
 			distance_increase = false
