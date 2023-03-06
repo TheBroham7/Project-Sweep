@@ -3,6 +3,7 @@ extends Area2D
 signal dead
 signal update_health
 signal broom
+signal dustpan
 
 var player_health = 5
 var screen_size
@@ -57,6 +58,7 @@ func _on_weapon_buttons_swing():
 	
 
 func _on_weapon_buttons_block():
+	emit_signal("dustpan")
 	$AnimationTimer.start()
 	$Animation.play()
 	$Animation.animation = "block"
