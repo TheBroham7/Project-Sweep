@@ -2,6 +2,7 @@ extends Area2D
 
 signal dead
 signal update_health
+signal broom
 
 var player_health = 5
 var screen_size
@@ -16,7 +17,6 @@ func _ready():
 	screen_size = get_viewport_rect()
 	$Animation.animation = 'walk'
 	$Animation.play()
-	
 func _on_Player_body_entered(body):
 	if current_action == 'walk':
 		body.ratpushback = true
@@ -27,7 +27,10 @@ func _on_Player_body_entered(body):
 		player_health -= 1
 		$Animation.modulate = Color(255, 0, 0)
 		$ColorTimer.start()
+		$Damage.play()
 		emit_signal("update_health", player_health)
+		if player_health >= 0:
+			emit_signal("update_health", player_health)
 		if player_health <= 0:
 			emit_signal("dead")
 			hide()
@@ -45,6 +48,7 @@ func _on_AnimationTimer_timeout():
 	current_action = 'walk'
 
 func _on_weapon_buttons_swing():
+	emit_signal("broom")
 	$AnimationTimer.start()
 	$Animation.play()
 	$Animation.animation = "swing"
@@ -77,3 +81,6 @@ func _on_ColorTimer_timeout():
 
 #func _on_ratPushBackTimer_timeout(body):
 	#body.velocity = Vector2(0.0, rand_range(175.0, 500.0))
+  
+func _on_Player_broom():
+	pass # Replace with function body.

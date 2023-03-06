@@ -7,6 +7,7 @@ signal boss_is_spawned
 
 func _ready():
 	$MobTimer.start()
+	$Game_over.hide()
 
 func _on_MobTimer_timeout():
 	# Spawn rat
@@ -32,7 +33,17 @@ func _on_HUD_boss_spawn():
 	emit_signal("boss_is_spawned")
 	
 
+	
+
+
 func game_over():
+	$Game_over.show()
+	$WaitTime.start()
 	set_process(false)
 	$MobTimer.stop()
 	$GameOver.play()
+
+
+
+func _on_WaitTime_timeout():
+	get_tree().change_scene("res://scenes/main_menu.tscn")
