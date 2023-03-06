@@ -13,7 +13,7 @@ func _process(delta):
 		global_position += velocity * delta
 	elif ratpushback == true: 
 		$PushBackTimer.start()
-		global_position -= velocity*0.05
+		global_position -= velocity*delta
 	pass
 
 func _on_VisibilityNotifier2D_screen_exited():
