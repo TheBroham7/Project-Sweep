@@ -119,6 +119,14 @@ margin_bottom = 374.0
 custom_fonts/font = SubResource( 2 )
 text = "GAME OVER"
 
+[node name="Stage_clear" type="Label" parent="."]
+margin_left = 100.0
+margin_top = 311.0
+margin_right = 364.0
+margin_bottom = 374.0
+custom_fonts/font = SubResource( 2 )
+text = "STAGE CLEAR"
+
 [connection signal="boss_is_spawned" from="." to="Player" method="_on_main_boss_is_spawned"]
 [connection signal="body_entered" from="Player" to="Player" method="_on_Player_body_entered"]
 [connection signal="dead" from="Player" to="." method="game_over"]
