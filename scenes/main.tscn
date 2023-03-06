@@ -69,6 +69,9 @@ press p to continue playing!"
 [node name="GameOver" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 
+[node name="WaitTime" type="Timer" parent="."]
+wait_time = 0.5
+
 [connection signal="boss_is_spawned" from="." to="Player" method="_on_main_boss_is_spawned"]
 [connection signal="body_entered" from="Player" to="Player" method="_on_Player_body_entered"]
 [connection signal="dead" from="Player" to="." method="game_over"]
@@ -81,3 +84,4 @@ stream = ExtResource( 8 )
 [connection signal="block" from="weapon_buttons" to="Player" method="_on_weapon_buttons_block"]
 [connection signal="broom" from="weapon_buttons" to="Player" method="_on_weapon_buttons_broom"]
 [connection signal="swing" from="weapon_buttons" to="Player" method="_on_weapon_buttons_swing"]
+[connection signal="timeout" from="WaitTime" to="." method="_on_WaitTime_timeout"]
