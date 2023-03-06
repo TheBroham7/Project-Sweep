@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/background/lockers.png" type="Texture" id=1]
 [ext_resource path="res://assets/background/essay.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://assets/background/poster_3.png" type="Texture" id=10]
 [ext_resource path="res://scripts/SchoolBackground.gd" type="Script" id=11]
 [ext_resource path="res://assets/music/school_music.mp3" type="AudioStream" id=12]
+[ext_resource path="res://assets/music/boss_music.mp3" type="AudioStream" id=13]
 
 [node name="SchoolBackground" type="ParallaxBackground"]
 script = ExtResource( 11 )
@@ -260,3 +261,6 @@ color = Color( 0.278431, 0.278431, 0.278431, 1 )
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
+
+[node name="BossMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )

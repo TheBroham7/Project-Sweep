@@ -76,5 +76,8 @@ stream = ExtResource( 14 )
 [node name="Damage" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 15 )
 
+[node name="broom_spawn" type="Position2D" parent="."]
+position = Vector2( -424.444, -437.778 )
+
 [connection signal="dead" from="." to="." method="_on_Player_dead"]
 [connection signal="timeout" from="AnimationTimer" to="." method="_on_AnimationTimer_timeout"]
