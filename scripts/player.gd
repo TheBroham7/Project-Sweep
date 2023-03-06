@@ -20,7 +20,7 @@ func _ready():
 	$Animation.play()
 func _on_Player_body_entered(body):
 	if current_action == 'walk':
-		body.ratpushback = true
+		body.pushback = true
 		#$ratPushBackTimer.start()
 		#body.velocity -= Vector2(0.0, rat_push_back) 
 		#$_on_ratPushBackTimer_timeout(body)
