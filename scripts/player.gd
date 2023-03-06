@@ -18,7 +18,6 @@ func _ready():
 	
 func _on_Player_body_entered(body):
 	if current_action == 'walk':
-		$Damage.play()
 		player_health -= 1
 		$Animation.modulate = Color(255, 0, 0)
 		$ColorTimer.start()
