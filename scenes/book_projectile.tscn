@@ -16,3 +16,8 @@ texture = ExtResource( 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.57079
 shape = SubResource( 1 )
+
+[node name="PushBackTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="timeout" from="PushBackTimer" to="." method="_on_PushBackTimer_timeout"]
