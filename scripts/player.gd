@@ -23,6 +23,8 @@ func _on_Player_body_entered(body):
 		$ColorTimer.start()
 		$Damage.play()
 		emit_signal("update_health", player_health)
+		if player_health >= 0:
+			emit_signal("update_health", player_health)
 		if player_health <= 0:
 			emit_signal("dead")
 			hide()
