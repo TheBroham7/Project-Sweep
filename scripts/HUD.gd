@@ -19,7 +19,8 @@ func _on_Player_update_health(health):
 func update_score():
 	if score_increase:
 		distance += 1
-		if distance == 3500:
+
+	if distance == 200:
 			emit_signal("boss_spawn")
 			emit_signal("stop_scroll")
 			score_increase = false
