@@ -21,7 +21,8 @@ func _on_Player_body_entered(body):
 		player_health -= 1
 		$Animation.modulate = Color(255, 0, 0)
 		$ColorTimer.start()
-		emit_signal("update_health", player_health)
+		if player_health >= 0:
+			emit_signal("update_health", player_health)
 		if player_health <= 0:
 			emit_signal("dead")
 			hide()
