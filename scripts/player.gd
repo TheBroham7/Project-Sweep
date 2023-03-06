@@ -1,6 +1,5 @@
 extends Area2D
 
-signal strike
 signal dead
 signal update_health
 
@@ -12,7 +11,6 @@ var boss_is_spawned = false
 var mob_health = 1
 
 
-
 func _ready():
 	screen_size = get_viewport_rect()
 	$Animation.animation = 'walk'
@@ -20,6 +18,7 @@ func _ready():
 	
 func _on_Player_body_entered(body):
 	if current_action == 'walk':
+		$Damage.play()
 		player_health -= 1
 		$Animation.modulate = Color(255, 0, 0)
 		$ColorTimer.start()
