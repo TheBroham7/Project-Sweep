@@ -68,4 +68,8 @@ stream = ExtResource( 12 )
 [node name="EnemyDied" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 14 )
 
+[node name="ColorTimer" type="Timer" parent="."]
+wait_time = 0.3
+
 [connection signal="timeout" from="AnimationTimer" to="." method="_on_AnimationTimer_timeout"]
+[connection signal="timeout" from="ColorTimer" to="." method="_on_ColorTimer_timeout"]
