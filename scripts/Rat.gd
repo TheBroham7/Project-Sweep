@@ -12,6 +12,7 @@ func _process(delta):
 	if ratpushback == false: 
 		global_position += velocity * delta
 	elif ratpushback == true: 
+		queue_free()
 		$PushBackTimer.start()
 		global_position -= velocity*delta
 	pass
