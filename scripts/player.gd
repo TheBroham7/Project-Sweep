@@ -18,6 +18,9 @@ func _ready():
 	screen_size = get_viewport_rect()
 	$Animation.animation = 'walk'
 	$Animation.play()
+	
+
+	
 func _on_Player_body_entered(body):
 	if current_action == 'walk':
 		body.queue_free()
@@ -88,3 +91,4 @@ func _on_ColorTimer_timeout():
   
 func _on_Player_broom():
 	pass # Replace with function body.
+

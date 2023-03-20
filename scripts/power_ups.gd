@@ -11,6 +11,12 @@ func _ready():
 	$FirstAidCount.add_color_override("font_color", Color.white)
 	$SpongeCount.add_color_override("font_color", Color.white)
 	
+func _process(delta):
+	if Input.is_action_just_pressed("power1"):
+		_on_Sponge_pressed()
+	if Input.is_action_just_pressed("power2"):
+		_on_FirstAid_pressed()
+	
 func _on_FirstAid_pressed():
 	if firstaidcount == 0:
 		return
