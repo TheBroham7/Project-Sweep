@@ -17,20 +17,20 @@ func _process(delta):
 # Attack Weapons
 
 func _on_Broom_pressed():
-	
-	emit_signal("swing")
-	emit_signal("broom")
-	$swing_timer.start()
-	get_node("Broom").disabled = true
+	if $Broom.disabled == false:
+		emit_signal("swing")
+		emit_signal("broom")
+		$swing_timer.start()
+		$Broom.disabled = true
 
 # Defensive Weapons
 
 func _on_DustPan_pressed():
-	
-	emit_signal("dust_pan")
-	emit_signal("block")
-	$block_timer.start()
-	get_node("DustPan").disabled = true
+	if $DustPan.disabled == false:
+		emit_signal("dust_pan")
+		emit_signal("block")
+		$block_timer.start()
+		$DustPan.disabled = true
 
 
 func _on_swing_timer_timeout():

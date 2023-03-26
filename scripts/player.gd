@@ -2,10 +2,11 @@ extends Area2D
 
 signal dead
 signal update_health
+signal update_coins
 signal broom
 signal dustpan
+signal update_sponge_count
 
-var player_health = 5
 var screen_size
 var current_action = 'walk'
 export var speed = 200
@@ -19,7 +20,13 @@ func _ready():
 	$Animation.animation = 'walk'
 	$Animation.play()
 	
-
+func _process(delta):
+	if Input.is_action_just_pressed("left"):
+		if position.x > 420:
+			position.x -= 125
+	if Input.is_action_just_pressed("right"):
+		if position.x < 650:
+			position.x += 125
 	
 func _on_Player_body_entered(body):
 	if current_action == 'walk':
@@ -29,20 +36,18 @@ func _on_Player_body_entered(body):
 		#body.velocity -= Vector2(0.0, rat_push_back) 
 		#$_on_ratPushBackTimer_timeout(body)
 		#body.global_position *= -0.001
-		player_health -= 1
+		$HealthBar.value -= 20
 		$Animation.modulate = Color(255, 0, 0)
 		$ColorTimer.start()
 		$Damage.play()
-		emit_signal("update_health", player_health)
-		if player_health >= 0:
-			emit_signal("update_health", player_health)
-		if player_health <= 0:
+		if $HealthBar.value <= 0:
 			emit_signal("dead")
 			hide()
 	elif current_action == "swing":
 		#body.velocity = Vector2(0.0, 0.0)
 		$EnemyDied.play()
 		body.queue_free()
+		emit_signal("update_coins")
 	elif current_action == 'block':
 		body.pushback = true
 		if boss_is_spawned == true:
@@ -75,8 +80,12 @@ func _on_weapon_buttons_broom():
 
 	
 func _on_power_ups_first_aid():
-	player_health += 1
-	emit_signal("update_health", player_health)
+	if $HealthBar.value == 100:
+		return
+	elif $HealthBar.value != 100:
+		emit_signal("update_sponge_count")
+		$HealthBar.value += 20
+	
 
 func _on_main_boss_is_spawned():
 	boss_is_spawned = true
