@@ -22,10 +22,7 @@ func _on_FirstAid_pressed():
 		return
 	$PowerUp.play()
 	emit_signal("first_aid")
-	firstaidcount -= 1
-	$FirstAidCount.text = str(firstaidcount)
-	if firstaidcount == 0:
-		$FirstAid.modulate = Color(255, 0, 0)
+	
 
 func _on_Sponge_pressed():
 	if spongecount == 0:
@@ -40,3 +37,10 @@ func _on_Sponge_pressed():
 
 func _on_power_ups_sponge():
 	get_tree().call_group("rats", "queue_free")
+
+
+func update_sponge_count():
+	firstaidcount -= 1
+	$FirstAidCount.text = str(firstaidcount)
+	if firstaidcount == 0:
+		$FirstAid.modulate = Color(255, 0, 0)

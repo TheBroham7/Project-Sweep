@@ -14,35 +14,38 @@ size = 64
 font_data = ExtResource( 1 )
 
 [node name="ColorRect" type="ColorRect"]
-margin_right = 480.0
-margin_bottom = 720.0
+margin_right = 1080.0
+margin_bottom = 1580.0
 color = Color( 0.0823529, 0.141176, 0.45098, 1 )
 script = ExtResource( 2 )
 
 [node name="clickable" type="Button" parent="."]
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 40.0
-margin_top = -160.0
-margin_right = -40.0
-margin_bottom = -40.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -463.0
+margin_top = 500.0
+margin_right = -2.0
+margin_bottom = 600.0
+rect_scale = Vector2( 2, 2 )
 custom_fonts/font = SubResource( 1 )
 text = "Click to Start"
 
 [node name="Label" type="Label" parent="."]
-margin_left = 30.0
-margin_top = 240.0
-margin_right = 450.0
-margin_bottom = 420.0
+margin_left = 113.0
+margin_top = 506.0
+margin_right = 533.0
+margin_bottom = 686.0
+rect_scale = Vector2( 2, 2 )
 custom_fonts/font = SubResource( 2 )
 text = "CLEAN UP
 
  DUTY!"
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 380, 350 )
-scale = Vector2( 0.1, 0.1 )
+position = Vector2( 856, 721 )
+scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 3 )
 
 [node name="MenuMusic" type="AudioStreamPlayer" parent="."]

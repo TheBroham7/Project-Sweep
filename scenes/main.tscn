@@ -28,24 +28,26 @@ __meta__ = {
 }
 
 [node name="SchoolBackground" parent="." instance=ExtResource( 1 )]
+__meta__ = {
+"_edit_horizontal_guides_": [ 6384.0 ],
+"_edit_vertical_guides_": [  ]
+}
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 540, 1112 )
 
 [node name="HUD" parent="." instance=ExtResource( 3 )]
 
 [node name="MobTimer" type="Timer" parent="."]
-wait_time = 1.5
+wait_time = 0.1
 
 [node name="power_ups" parent="." instance=ExtResource( 6 )]
-position = Vector2( 24, 136 )
-scale = Vector2( 0.75, 0.75 )
+position = Vector2( 548, 920 )
+scale = Vector2( 0.7, 0.7 )
 
 [node name="weapon_buttons" parent="." instance=ExtResource( 5 )]
-position = Vector2( 24, -8 )
-scale = Vector2( 0.75, 0.75 )
-
-[node name="MobSpawnPoint" type="Position2D" parent="."]
-position = Vector2( 238, -40 )
+position = Vector2( 288, 920 )
+scale = Vector2( 0.7, 0.7 )
 
 [node name="BossSpawnPoint" type="Position2D" parent="."]
 position = Vector2( 238, 96 )
@@ -112,10 +114,10 @@ stream = ExtResource( 8 )
 wait_time = 1.5
 
 [node name="Game_over" type="Label" parent="."]
-margin_left = 117.0
-margin_top = 311.0
-margin_right = 361.0
-margin_bottom = 374.0
+margin_left = 416.0
+margin_top = 672.0
+margin_right = 660.0
+margin_bottom = 735.0
 custom_fonts/font = SubResource( 2 )
 text = "GAME OVER"
 
@@ -131,7 +133,9 @@ text = "STAGE CLEAR"
 [connection signal="boss_is_spawned" from="." to="Player" method="_on_main_boss_is_spawned"]
 [connection signal="body_entered" from="Player" to="Player" method="_on_Player_body_entered"]
 [connection signal="dead" from="Player" to="." method="game_over"]
+[connection signal="update_coins" from="Player" to="HUD" method="update_coins"]
 [connection signal="update_health" from="Player" to="HUD" method="_on_Player_update_health"]
+[connection signal="update_sponge_count" from="Player" to="power_ups" method="update_sponge_count"]
 [connection signal="boss_spawn" from="HUD" to="." method="_on_HUD_boss_spawn"]
 [connection signal="stop_scroll" from="HUD" to="SchoolBackground" method="_on_HUD_stop_scroll"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]

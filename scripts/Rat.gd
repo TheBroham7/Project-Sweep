@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 var rat_health = 3
-var speed = rand_range(175.0, 500.0)
+var speed = rand_range(190.0, 500.0)
 var velocity = Vector2(0.0, speed)
 var pushback = false
 

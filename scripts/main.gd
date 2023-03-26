@@ -1,9 +1,10 @@
 extends Node2D
 
-export (float) var spawnTime = rand_range(0.1, 2.0)
+export (float) var spawnTime = rand_range(0.1, 1.0)
 var rat = preload("res://scenes/Rat.tscn")
 var classroom_boss = preload("res://scenes/classroom_boss.tscn")
 signal boss_is_spawned
+var spawnList = [Vector2(415,-20), Vector2(540, -20), Vector2(665,-20)]
 
 func _ready():
 	$MobTimer.start()
@@ -12,7 +13,7 @@ func _ready():
 func _on_MobTimer_timeout():
 	# Spawn rat
 	var newRat= rat.instance()
-	newRat.position = $MobSpawnPoint.position
+	newRat.position = spawnList[randi() % spawnList.size()]
 	add_child(newRat)
 	$MobTimer.wait_time = spawnTime
 	$MobTimer.start()
@@ -31,7 +32,6 @@ func _on_HUD_boss_spawn():
 	boss.position = $BossSpawnPoint.position
 	add_child(boss)
 	emit_signal("boss_is_spawned")
-	
 
 	
 
@@ -47,3 +47,4 @@ func game_over():
 
 func _on_WaitTime_timeout():
 	get_tree().change_scene("res://scenes/main_menu.tscn")
+
