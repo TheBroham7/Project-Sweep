@@ -8,3 +8,6 @@ func _on_new_game_pressed():
 
 func _on_tutorial_pressed():
 	get_tree().change_scene("res://scenes/Tutorial.tscn")
+
+func _on_equipment_pressed():
+	get_tree().change_scene("res://scenes/equipment.tscn")
