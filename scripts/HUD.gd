@@ -5,6 +5,7 @@ signal stop_scroll
 
 var distance_increase = true
 
+
 var coins = 0
 var distance = 0
 
@@ -22,8 +23,7 @@ func update_score():
 			distance_increase = false
 	$ColorRect/Distance.text = str(distance) + "M"
 
-func update_coins():
-	coins += 1
-	$ColorRect2/Coins.text = "$" + str(coins) 
-	
-	
+
+func _on_Player_update_coins():
+	coins += int (rand_range(0, 10))
+	$ColorRect2/Coins.text = "$" + str(coins)

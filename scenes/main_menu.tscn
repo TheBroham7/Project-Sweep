@@ -28,14 +28,12 @@ custom_fonts/font = SubResource( 1 )
 text = "NEW GAME"
 
 [node name="equipment" type="Button" parent="."]
-modulate = Color( 0.827451, 0.258824, 0.258824, 1 )
 margin_left = 128.0
 margin_top = 712.0
 margin_right = 543.0
 margin_bottom = 840.0
 rect_scale = Vector2( 2, 2 )
 custom_fonts/font = SubResource( 1 )
-disabled = true
 text = "EQUIPMENT"
 
 [node name="tutorial" type="Button" parent="."]
@@ -62,4 +60,5 @@ text = "Click an option"
 stream = ExtResource( 3 )
 
 [connection signal="pressed" from="new_game" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="equipment" to="." method="_on_equipment_pressed"]
 [connection signal="pressed" from="tutorial" to="." method="_on_tutorial_pressed"]

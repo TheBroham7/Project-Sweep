@@ -11,7 +11,7 @@ func _ready():
 	$FirstAidCount.add_color_override("font_color", Color.white)
 	$SpongeCount.add_color_override("font_color", Color.white)
 	
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("power1"):
 		_on_Sponge_pressed()
 	if Input.is_action_just_pressed("power2"):
@@ -38,9 +38,9 @@ func _on_Sponge_pressed():
 func _on_power_ups_sponge():
 	get_tree().call_group("rats", "queue_free")
 
-
-func update_sponge_count():
+func _on_Player_update_first_aid_count():
 	firstaidcount -= 1
 	$FirstAidCount.text = str(firstaidcount)
 	if firstaidcount == 0:
 		$FirstAid.modulate = Color(255, 0, 0)
+
