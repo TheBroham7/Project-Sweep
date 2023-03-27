@@ -19,13 +19,14 @@ height = 16.0
 
 [node name="ClassroomBoss" type="RigidBody2D"]
 position = Vector2( 200, 104 )
+gravity_scale = 0.0
 script = ExtResource( 4 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.1, 0.1 )
 frames = SubResource( 1 )
 animation = "attack"
-frame = 2
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -33,10 +34,10 @@ position = Vector2( 8, 0 )
 shape = SubResource( 2 )
 
 [node name="Position1" type="Position2D" parent="."]
-position = Vector2( 32, 24 )
+position = Vector2( 60, 50 )
 
 [node name="Position2" type="Position2D" parent="."]
-position = Vector2( -28, 20 )
+position = Vector2( -50, 50 )
 
 [node name="BossProjectileTimer" type="Timer" parent="."]
 wait_time = 4.0
