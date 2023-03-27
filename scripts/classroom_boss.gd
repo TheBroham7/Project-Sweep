@@ -15,7 +15,7 @@ func _ready():
 func _process(delta):
 	if forward:
 		global_position += velocity * delta
-		if global_position.y >= 460:
+		if global_position.y >= 950:
 			forward = false
 	else:
 		global_position += Vector2(0.0, rand_range(-50.0, -100.0)) * delta

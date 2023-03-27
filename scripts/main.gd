@@ -1,6 +1,6 @@
 extends Node2D
 
-export (float) var spawnTime = rand_range(0.1, 1.0)
+export (float) var spawnTime = rand_range(0.2, 1.0)
 var rat = preload("res://scenes/Rat.tscn")
 var classroom_boss = preload("res://scenes/classroom_boss.tscn")
 signal boss_is_spawned
