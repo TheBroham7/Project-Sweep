@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/enemies/classroom_boss/classroom_boss_2.PNG" type="Texture" id=1]
 [ext_resource path="res://assets/enemies/classroom_boss/classroom_boss_1.PNG" type="Texture" id=2]
@@ -14,36 +14,49 @@ animations = [ {
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 56.0
+radius = 72.0
 height = 16.0
 
-[node name="ClassroomBoss" type="RigidBody2D"]
-position = Vector2( 200, 104 )
-gravity_scale = 0.0
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.690196, 0.0588235, 0.0588235, 1 )
+
+[node name="ClassroomBoss" type="Area2D"]
 script = ExtResource( 4 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.1, 0.1 )
 frames = SubResource( 1 )
 animation = "attack"
-frame = 1
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 8, 0 )
+position = Vector2( 4, 15 )
 shape = SubResource( 2 )
 
 [node name="Position1" type="Position2D" parent="."]
-position = Vector2( 60, 50 )
+position = Vector2( 150, 50 )
 
 [node name="Position2" type="Position2D" parent="."]
-position = Vector2( -50, 50 )
+position = Vector2( -150, 50 )
 
 [node name="BossProjectileTimer" type="Timer" parent="."]
-wait_time = 4.0
+wait_time = 3.0
 
 [node name="WaitTime" type="Timer" parent="."]
 one_shot = true
+
+[node name="cbhealth" type="ProgressBar" parent="."]
+margin_left = -41.0
+margin_top = -82.0
+margin_right = 57.0
+margin_bottom = -68.0
+custom_styles/fg = SubResource( 3 )
+value = 100.0
+percent_visible = false
+
+[node name="Position3" type="Position2D" parent="."]
+position = Vector2( 0, 125 )
 
 [connection signal="timeout" from="BossProjectileTimer" to="." method="_on_BossProjectileTimer_timeout"]
 [connection signal="timeout" from="WaitTime" to="." method="_on_WaitTime_timeout"]
