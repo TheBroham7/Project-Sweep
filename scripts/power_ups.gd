@@ -2,12 +2,10 @@ extends Node2D
 
 signal first_aid
 signal sponge
-var spongecount = 3
-var firstaidcount = 3
 
 func _ready():
-	$FirstAidCount.text = String(spongecount)
-	$SpongeCount.text = String(firstaidcount)
+	$FirstAidCount.text = String(Global.first_aid)
+	$SpongeCount.text = String(Global.sponges)
 	$FirstAidCount.add_color_override("font_color", Color.white)
 	$SpongeCount.add_color_override("font_color", Color.white)
 	
@@ -18,20 +16,19 @@ func _process(_delta):
 		_on_FirstAid_pressed()
 	
 func _on_FirstAid_pressed():
-	if firstaidcount == 0:
+	if Global.first_aid == 0:
 		return
-	$PowerUp.play()
 	emit_signal("first_aid")
 	
 
 func _on_Sponge_pressed():
-	if spongecount == 0:
+	if Global.sponges == 0:
 		return
-	$PowerUp.play()
 	emit_signal("sponge")
-	spongecount -= 1
-	$SpongeCount.text = str(spongecount)
-	if spongecount == 0:
+	$PowerUp.play()
+	Global.sponges -= 1
+	$SpongeCount.text = str(Global.sponges)
+	if Global.sponges == 0:
 		$Sponge.modulate = Color(255, 0, 0)
 
 
@@ -39,8 +36,9 @@ func _on_power_ups_sponge():
 	get_tree().call_group("rats", "queue_free")
 
 func _on_Player_update_first_aid_count():
-	firstaidcount -= 1
-	$FirstAidCount.text = str(firstaidcount)
-	if firstaidcount == 0:
+	$PowerUp.play()
+	Global.first_aid -= 1
+	$FirstAidCount.text = str(Global.first_aid)
+	if Global.first_aid == 0:
 		$FirstAid.modulate = Color(255, 0, 0)
 

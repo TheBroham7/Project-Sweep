@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/school_background.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=2]
@@ -14,9 +14,21 @@
 size = 32
 font_data = ExtResource( 9 )
 
+[sub_resource type="InputEventAction" id=3]
+action = "pause"
+
+[sub_resource type="ShortCut" id=4]
+shortcut = SubResource( 3 )
+
+[sub_resource type="InputEventAction" id=5]
+action = "pause"
+
+[sub_resource type="ShortCut" id=6]
+shortcut = SubResource( 5 )
+
 [sub_resource type="DynamicFont" id=2]
-size = 32
-outline_size = 5
+size = 64
+outline_size = 8
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 9 )
 
@@ -62,6 +74,7 @@ margin_left = -26.0
 margin_right = 26.0
 margin_bottom = 44.0
 custom_fonts/font = SubResource( 1 )
+shortcut = SubResource( 4 )
 text = "i"
 
 [node name="Pause" type="Control" parent="pause_button/Button"]
@@ -72,12 +85,13 @@ margin_bottom = 4123.0
 script = ExtResource( 7 )
 
 [node name="Background" type="ColorRect" parent="pause_button/Button/Pause"]
-margin_left = -214.0
-margin_right = 480.0
-margin_bottom = 720.0
+margin_left = -515.0
+margin_right = 1080.0
+margin_bottom = 1580.0
 color = Color( 0.0352941, 0.403922, 0.0235294, 0.658824 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="pause_button/Button/Pause/Background"]
+anchor_right = 0.35
 margin_right = 476.0
 margin_bottom = 4142.0
 custom_fonts/mono_font = SubResource( 1 )
@@ -85,6 +99,7 @@ custom_fonts/bold_italics_font = SubResource( 1 )
 custom_fonts/italics_font = SubResource( 1 )
 custom_fonts/bold_font = SubResource( 1 )
 custom_fonts/normal_font = SubResource( 1 )
+tab_size = 8
 text = "
 
 
@@ -92,19 +107,24 @@ text = "
 User Instructions: 
 
 
-> Click the broom to strike.
+> Click the broom icon or the number 1 to strike at enemies
 
-> Click  the dustpan to dodge.
+> Click  the dustpan icon or the number 2 to block against enemies
 
-> Use the sponge to wipe out all enemies. 
+> Use the sponge power up to destroy all enemies on screen
 
-> Use the first aid kit to regain some health. 
+> Use the first aid power up to regain some lost health
+
+> Move left to right  with the arrow keys or WD keys
+
+>Pause by clicking the i icon or clicking the ESC key 
 "
 
 [node name="button_dupe" type="Button" parent="pause_button/Button/Pause"]
 margin_right = 52.0
 margin_bottom = 44.0
 custom_fonts/font = SubResource( 1 )
+shortcut = SubResource( 6 )
 text = "i"
 
 [node name="GameOver" type="AudioStreamPlayer" parent="."]
@@ -114,12 +134,13 @@ stream = ExtResource( 8 )
 wait_time = 1.5
 
 [node name="Game_over" type="Label" parent="."]
-margin_left = 416.0
-margin_top = 672.0
-margin_right = 660.0
-margin_bottom = 735.0
+margin_left = 297.0
+margin_top = 628.0
+margin_right = 817.0
+margin_bottom = 718.0
 custom_fonts/font = SubResource( 2 )
 text = "GAME OVER"
+valign = 1
 
 [node name="Stage_clear" type="Label" parent="."]
 visible = false

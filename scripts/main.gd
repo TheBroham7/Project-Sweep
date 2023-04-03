@@ -27,7 +27,6 @@ func _on_HUD_boss_spawn():
 	$MobTimer.stop()
 	$SchoolBackground/Music.stop()
 	$SchoolBackground/BossMusic.play()
-	get_tree().call_group("rats", "queue_free")
 	var boss = classroom_boss.instance()
 	boss.position = $BossSpawnPoint.position
 	add_child(boss)
@@ -37,6 +36,7 @@ func _on_HUD_boss_spawn():
 
 
 func game_over():
+	get_tree().call_group("rats", "queue_free")
 	$Game_over.show()
 	$WaitTime.start()
 	set_process(false)

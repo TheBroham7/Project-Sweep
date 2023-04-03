@@ -39,7 +39,7 @@ func _on_Player_body_entered(body):
 		#body.velocity -= Vector2(0.0, rat_push_back) 
 		#$_on_ratPushBackTimer_timeout(body)
 		#body.global_position *= -0.001
-		$HealthBar.value -= rand_range(10, 20)
+		$HealthBar.value -= rand_range(24, 49)
 		$Animation.modulate = Color(255, 0, 0)
 		$ColorTimer.start()
 		$Damage.play()
