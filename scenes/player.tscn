@@ -55,7 +55,7 @@ script = ExtResource( 1 )
 position = Vector2( 0, -160 )
 
 [node name="broom" parent="." instance=ExtResource( 15 )]
-position = Vector2( 3.05176e-05, -3.05176e-05 )
+position = Vector2( 0, -100 )
 
 [node name="Animation" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.284539, 0.284539 )
