@@ -20,7 +20,7 @@ func _on_MobTimer_timeout():
 
 func _process(_delta):
 	$HUD.update_score()
-	
+	$pause_button/Button/Pause/total_coins.text = "Total Coins: " + str(Global.coins)
 
 func _on_HUD_boss_spawn():
 	# Spawn boss
@@ -48,3 +48,6 @@ func game_over():
 func _on_WaitTime_timeout():
 	get_tree().change_scene("res://scenes/main_menu.tscn")
 
+
+func _on_back_to_main_pressed():
+	get_tree().change_scene("res://scenes/main_menu.tscn")
