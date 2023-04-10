@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-var velocity = Vector2(0.0, rand_range(200.0, 300.0))
+var velocity = Vector2(0.0, rand_range(700.0, 1000.0))
 var pushback = false
 
 func _process(delta):

@@ -3,7 +3,6 @@
 [ext_resource path="res://assets/weapons/weapon_broom.png" type="Texture" id=1]
 [ext_resource path="res://scripts/broom.gd" type="Script" id=2]
 
-
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 53, 56 )
 

@@ -41,7 +41,6 @@ position = Vector2( 150, 50 )
 position = Vector2( -150, 50 )
 
 [node name="BossProjectileTimer" type="Timer" parent="."]
-wait_time = 3.0
 
 [node name="WaitTime" type="Timer" parent="."]
 one_shot = true
@@ -56,7 +55,8 @@ value = 100.0
 percent_visible = false
 
 [node name="Position3" type="Position2D" parent="."]
-position = Vector2( 0, 125 )
+position = Vector2( 0, 175 )
 
+[connection signal="area_entered" from="." to="." method="_on_ClassroomBoss_area_entered"]
 [connection signal="timeout" from="BossProjectileTimer" to="." method="_on_BossProjectileTimer_timeout"]
 [connection signal="timeout" from="WaitTime" to="." method="_on_WaitTime_timeout"]
