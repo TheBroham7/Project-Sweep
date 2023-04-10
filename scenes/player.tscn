@@ -57,7 +57,7 @@ position = Vector2( 0, -160 )
 
 [node name="broom" parent="." instance=ExtResource( 15 )]
 visible = false
-position = Vector2( 0, -100 )
+position = Vector2( 0, -125 )
 
 [node name="Animation" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.284539, 0.284539 )

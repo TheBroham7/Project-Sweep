@@ -1,6 +1,7 @@
 extends ParallaxBackground
 
 export (float) var scrolling_speed = 150.0
+var boss_clears = 0
 
 export(PackedScene) var mob_scene
 
@@ -8,7 +9,7 @@ func _ready():
 	$Music.play()
 
 func _process(delta):
-	scroll_offset.y += scrolling_speed * delta
+	scroll_offset.y += scrolling_speed * delta * (boss_clears/10 + 1)
 
 func _on_Player_game_over():
 	scrolling_speed = 0
@@ -16,3 +17,7 @@ func _on_Player_game_over():
 
 func _on_HUD_stop_scroll():
 	scrolling_speed = 0
+
+
+func _on_main_continuing():
+	scrolling_speed = 150.0
