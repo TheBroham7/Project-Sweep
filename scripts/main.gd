@@ -5,10 +5,16 @@ var rat = preload("res://scenes/Rat.tscn")
 var classroom_boss = preload("res://scenes/classroom_boss.tscn")
 signal boss_is_spawned
 var spawnList = [Vector2(415,-20), Vector2(540, -20), Vector2(665,-20)]
+signal continuing
 
 func _ready():
+	Global.connect("stage_clear", self, "on_stage_clear")
 	$MobTimer.start()
 	$Game_over.hide()
+
+func on_stage_clear():
+	$Clear_label.show()
+	$clear_timer.start()
 
 func _on_MobTimer_timeout():
 	# Spawn rat
@@ -40,14 +46,32 @@ func game_over():
 	$Game_over.show()
 	$WaitTime.start()
 	set_process(false)
+	high_score($HUD.distance)
 	$MobTimer.stop()
 	$GameOver.play()
 
-
+func high_score(x):
+	if Global.high_score >= x:
+		return
+	else:
+		Global.high_score = x
 
 func _on_WaitTime_timeout():
 	get_tree().change_scene("res://scenes/main_menu.tscn")
 
 
 func _on_back_to_main_pressed():
+	var new_pause_state = not get_tree().paused
+	get_tree().paused = new_pause_state
+	visible = new_pause_state
 	get_tree().change_scene("res://scenes/main_menu.tscn")
+
+
+func _on_clear_timer_timeout():
+	$SchoolBackground/BossMusic.stop()
+	$SchoolBackground/Music.play()
+	$Clear_label.hide()
+	$SchoolBackground.boss_clears += 1
+	$MobTimer.start()
+	emit_signal("continuing")
+	$HUD.distance_increase = true

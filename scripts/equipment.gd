@@ -37,4 +37,4 @@ func update_sponge_label():
 	$sponge_amounts.text = "Currently: " + str(Global.sponges)
 	
 func update_first_aid_label():
-	$first_aid_amounts.text = "Currentlt: " + str(Global.first_aid)
+	$first_aid_amounts.text = "Currently: " + str(Global.first_aid)

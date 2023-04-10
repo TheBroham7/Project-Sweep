@@ -5,12 +5,13 @@ var projectile_scene =  preload("res://scenes/book_projectile.tscn")
 #onready var projectile_spawn = 2
 var velocity = Vector2(0.0, rand_range(400.0, 500.0))
 var pushback = false
-var spawnList = [Vector2(415,-20), Vector2(540, -20), Vector2(665,-20)]
+var spawnList = [Vector2(415,200), Vector2(540, 200), Vector2(665,200)]
 
 var forward = true
 
 func _ready():
 	$WaitTime.start()
+	$cbhealth.value = 100
 	#var boss_health = 3
 
 func _process(delta):
@@ -23,8 +24,15 @@ func _process(delta):
 		if global_position.y <= 96:
 			forward = true
 
-func _on_ClassroomBoss_area_entered(body): 
-	$cbhealth.value -= rand_range(1, 10) 
+func _on_ClassroomBoss_area_entered(body):
+	$damage.play()
+	$cbhealth.value -= rand_range(5, 25)
+	if $cbhealth.value <= 0:
+		$victory.play()
+		Global.stage_clear()
+		self.queue_free()
+	else:
+		return
 	#if $cbhealth.value <= 0: 
 		
 	

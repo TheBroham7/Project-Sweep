@@ -3,6 +3,7 @@ extends CanvasLayer
 signal boss_spawn
 signal stop_scroll
 
+
 var distance_increase = true
 
 var distance = 0
@@ -15,7 +16,7 @@ func _ready():
 func update_score():
 	if distance_increase:
 		distance += 1
-	if distance == 5000 and distance_increase == true:
+	if (distance%5000)==0 and distance_increase == true:
 			emit_signal("boss_spawn")
 			emit_signal("stop_scroll")
 			distance_increase = false
@@ -23,7 +24,7 @@ func update_score():
 
 
 func _on_Player_update_coins():
-	var coins_gained = int (rand_range(0, 20))
+	var coins_gained = int (rand_range(1, 20))
 	Global.add_coin(coins_gained)
 	$ColorRect2/Coins.text = "$" + str(Global.coins)
 
