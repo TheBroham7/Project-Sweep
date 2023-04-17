@@ -79,4 +79,6 @@ func _on_ClassroomBoss_clear():
 	$Clear_label.show()
 	$Clear.play()
 	$clear_timer.start()
+	$SchoolBackground/Music.play()
+	
 
