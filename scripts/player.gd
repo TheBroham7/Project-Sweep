@@ -12,7 +12,6 @@ signal update_first_aid_count
 var screen_size
 var current_action = 'walk'
 export var speed = 200
-var boss_is_spawned = false
 var mob_health = 1
 var rat_push_back = rand_range(100.0, 500.0)
 var coin = preload("res://scenes/coin.tscn")
@@ -64,8 +63,7 @@ func _on_Player_body_entered(body):
 		emit_signal("update_coins")
 	elif current_action == 'block':
 		body.pushback = true
-		if boss_is_spawned == true:
-			body.queue_free()
+
 
 func _on_AnimationTimer_timeout():
 	$Animation.play()
@@ -99,9 +97,6 @@ func _on_power_ups_first_aid():
 		else:
 			$HealthBar.value += 20
 	
-
-func _on_main_boss_is_spawned():
-	boss_is_spawned = true
 
 
 func _on_ColorTimer_timeout():

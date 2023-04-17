@@ -2,19 +2,17 @@ extends Node2D
 
 export (float) var spawnTime = rand_range(0.2, 1.0)
 var rat = preload("res://scenes/Rat.tscn")
-var classroom_boss = preload("res://scenes/classroom_boss.tscn")
 signal boss_is_spawned
 var spawnList = [Vector2(415,-20), Vector2(540, -20), Vector2(665,-20)]
 signal continuing
 
 func _ready():
-	Global.connect("stage_clear", self, "on_stage_clear")
 	$MobTimer.start()
 	$Game_over.hide()
+	$ClassroomBoss.hide()
+	$ClassroomBoss/CollisionShape2D.disabled = true
 
-func on_stage_clear():
-	$Clear_label.show()
-	$clear_timer.start()
+
 
 func _on_MobTimer_timeout():
 	# Spawn rat
@@ -33,9 +31,8 @@ func _on_HUD_boss_spawn():
 	$MobTimer.stop()
 	$SchoolBackground/Music.stop()
 	$SchoolBackground/BossMusic.play()
-	var boss = classroom_boss.instance()
-	boss.position = $BossSpawnPoint.position
-	add_child(boss)
+	$ClassroomBoss.position = $BossSpawnPoint.position
+	$ClassroomBoss.show()
 	emit_signal("boss_is_spawned")
 
 	
@@ -68,10 +65,16 @@ func _on_back_to_main_pressed():
 
 
 func _on_clear_timer_timeout():
-	$SchoolBackground/BossMusic.stop()
-	$SchoolBackground/Music.play()
 	$Clear_label.hide()
-	$SchoolBackground.boss_clears += 1
 	$MobTimer.start()
 	emit_signal("continuing")
 	$HUD.distance_increase = true
+
+
+func _on_ClassroomBoss_clear():
+	$ClassroomBoss.position = $BossSpawnPoint.position
+	$SchoolBackground/BossMusic.stop()
+	$Clear_label.show()
+	$Clear.play()
+	$clear_timer.start()
+

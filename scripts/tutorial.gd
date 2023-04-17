@@ -12,6 +12,7 @@ var score = 0
 onready var count = false
 
 func _ready():
+	$Player/Collision.disabled = false
 	$SchoolBackground._on_HUD_stop_scroll()
 	$Explanation2.hide()
 	$Explanation3.hide()
@@ -60,23 +61,8 @@ func explanation():
 		action = "left"
 	current_explanation.show()
 
-
-
-func _on_HUD_boss_spawn():
-	# Spawn boss
-	$MobTimer.stop()
-	$SchoolBackground/Music.stop()
-	$SchoolBackground/BossMusic.play()
-	get_tree().call_group("rats", "queue_free")
-	var boss = classroom_boss.instance()
-	boss.position = $BossSpawnPoint.position
-	add_child(boss)
-	emit_signal("boss_is_spawned")
-
-	
-
-
 func game_over():
+	$Player/Collision.disabled = true
 	$WaitTime.start()
 	set_process(false)
 	$MobTimer.stop()

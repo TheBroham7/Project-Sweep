@@ -4,7 +4,6 @@ var coins = 100
 var sponges = 3
 var first_aid = 3
 var high_score = 0
-signal stage_clear
 
 func add_coin(x):
 	coins += x
@@ -27,5 +26,3 @@ func get_sponges():
 func get_first_aid():
 	return first_aid
 
-func stage_clear():
-	emit_signal("stage_clear")
