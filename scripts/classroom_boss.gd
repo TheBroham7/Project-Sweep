@@ -35,9 +35,9 @@ func _on_ClassroomBoss_area_entered(body):
 		hide()
 		boss_clears += 1
 		emit_signal("clear")
+		$BossProjectileTimer.stop()
 	else:
 		return
-	#if $cbhealth.value <= 0: 
 		
 	
 func _on_BossProjectileTimer_timeout():
@@ -47,20 +47,9 @@ func _on_BossProjectileTimer_timeout():
 func spawn_projectile():
 	var projectile = projectile_scene.instance()
 	projectile.pushback = true
-	#if projectile_spawn == 1:
-		#projectile.position = $Position1.position
-		#projectile_spawn = 3
-	#elif projectile_spawn == 2:
-		#projectile.position = $Position2.position
-		#projectile_spawn = 1
-	#else: 
-		#projectile.position = $Position3.position
-		#projectile_spawn = 2
 	projectile.position = spawnList[randi() % spawnList.size()]
 	
 	get_tree().get_root().get_node("main").add_child(projectile)
-	#if forward == false:
-		#projectile.velocity.y += 750
 	
 
 func _on_WaitTime_timeout():
