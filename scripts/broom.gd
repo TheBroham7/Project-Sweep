@@ -1,4 +1,5 @@
 extends Area2D
+#var weapon_cd = preload("res://scenes/main.tscn")
 
 func _ready():
 	hide()
@@ -12,6 +13,7 @@ func _on_Player_broom():
 	$SwingAnimation.start()
 	show()
 	$CollisionShape2D.disabled = false
+	#$Animation.modulate = Color(255, 0, 0)
 
 func _on_SwingAnimation_timeout():
 	hide()

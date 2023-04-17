@@ -3,6 +3,7 @@ extends Node2D
 export (float) var spawnTime = rand_range(0.2, 1.0)
 var rat = preload("res://scenes/Rat.tscn")
 var classroom_boss = preload("res://scenes/classroom_boss.tscn")
+#var weapon_cd = preload("res://scripts/broom.gd")
 signal boss_is_spawned
 var spawnList = [Vector2(415,-20), Vector2(540, -20), Vector2(665,-20)]
 signal continuing
