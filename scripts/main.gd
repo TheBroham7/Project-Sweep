@@ -67,10 +67,12 @@ func _on_back_to_main_pressed():
 
 
 func _on_clear_timer_timeout():
+	$clear_timer.stop()
 	$Clear_label.hide()
 	$MobTimer.start()
 	emit_signal("continuing")
 	$HUD.distance_increase = true
+	$SchoolBackground/Music.play()
 
 
 func _on_ClassroomBoss_clear():
@@ -79,6 +81,6 @@ func _on_ClassroomBoss_clear():
 	$Clear_label.show()
 	$Clear.play()
 	$clear_timer.start()
-	$SchoolBackground/Music.play()
+	
 	
 

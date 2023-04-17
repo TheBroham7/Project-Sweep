@@ -151,6 +151,7 @@ valign = 1
 
 [node name="clear_timer" type="Timer" parent="."]
 wait_time = 2.0
+one_shot = true
 
 [node name="ClassroomBoss" parent="." instance=ExtResource( 10 )]
 
