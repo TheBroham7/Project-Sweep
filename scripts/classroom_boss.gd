@@ -6,12 +6,14 @@ var projectile_scene =  preload("res://scenes/book_projectile.tscn")
 var velocity = Vector2(0.0, rand_range(400.0, 500.0))
 var pushback = false
 var spawnList = [Vector2(415,200), Vector2(540, 200), Vector2(665,200)]
-
+signal clear
+var boss_clears = 0
 var forward = true
+var boss_spawned = false
 
 func _ready():
-	$WaitTime.start()
 	$cbhealth.value = 100
+	set_process(false)
 	#var boss_health = 3
 
 func _process(delta):
@@ -19,8 +21,8 @@ func _process(delta):
 		global_position += velocity * delta
 		if global_position.y >= 940:
 			forward = false
-	else:
-		global_position += Vector2(0.0, rand_range(-150.0, -200.0)) * delta
+	if !forward:
+		global_position -= velocity * delta
 		if global_position.y <= 96:
 			forward = true
 
@@ -28,9 +30,11 @@ func _on_ClassroomBoss_area_entered(body):
 	$damage.play()
 	$cbhealth.value -= rand_range(5, 25)
 	if $cbhealth.value <= 0:
-		$victory.play()
-		Global.stage_clear()
-		self.queue_free()
+		$CollisionShape2D.disabled = true
+		boss_spawned = false
+		hide()
+		boss_clears += 1
+		emit_signal("clear")
 	else:
 		return
 	#if $cbhealth.value <= 0: 
@@ -60,6 +64,15 @@ func spawn_projectile():
 	
 
 func _on_WaitTime_timeout():
-	$BossProjectileTimer.start()
-	spawn_projectile()
+	if boss_spawned == true:
+		$BossProjectileTimer.start()
+		spawn_projectile()
+
+
+func _on_main_boss_is_spawned():
+	boss_spawned = true
+	$cbhealth.value = 100 + (boss_clears*25)
+	set_process(true)
+	$WaitTime.start()
+	$CollisionShape2D.disabled = false
 

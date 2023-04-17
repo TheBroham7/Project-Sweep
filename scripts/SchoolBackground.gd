@@ -9,7 +9,7 @@ func _ready():
 	$Music.play()
 
 func _process(delta):
-	scroll_offset.y += scrolling_speed * delta * (boss_clears/10 + 1)
+	scroll_offset.y += (scrolling_speed + (boss_clears*5)) * delta
 
 func _on_Player_game_over():
 	scrolling_speed = 0
@@ -18,6 +18,6 @@ func _on_Player_game_over():
 func _on_HUD_stop_scroll():
 	scrolling_speed = 0
 
-
 func _on_main_continuing():
+	boss_clears += 1
 	scrolling_speed = 150.0

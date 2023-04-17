@@ -8,6 +8,10 @@ func _ready():
 	$SpongeCount.text = String(Global.sponges)
 	$FirstAidCount.add_color_override("font_color", Color.white)
 	$SpongeCount.add_color_override("font_color", Color.white)
+	if Global.sponges == 0:
+		$Sponge.modulate = Color(255, 0, 0)
+	if Global.first_aid == 0:
+		$FirstAid.modulate = Color(255, 0, 0)
 	
 func _process(_delta):
 	if Input.is_action_just_pressed("power1"):
