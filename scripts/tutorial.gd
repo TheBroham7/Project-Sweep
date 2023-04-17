@@ -5,15 +5,19 @@ var rat = preload("res://scenes/Rat.tscn")
 var classroom_boss = preload("res://scenes/classroom_boss.tscn")
 signal boss_is_spawned
 var spawnList = [Vector2(415,-20), Vector2(540, -20), Vector2(665,-20)]
-onready var current_explanation = $StartLabel
+onready var current_explanation = $Explanation1
+signal next
+var action = "swing"
+var score = 0
+onready var count = false
 
 func _ready():
-	$Explanation1.hide()
+	$SchoolBackground._on_HUD_stop_scroll()
 	$Explanation2.hide()
 	$Explanation3.hide()
 	$Explanation4.hide()
 	$Explanation5.hide()
-	$Game_over.hide()
+	$good_luck.hide()
 
 func _on_MobTimer_timeout():
 	# Spawn rat
@@ -24,27 +28,39 @@ func _on_MobTimer_timeout():
 	$MobTimer.start()
 
 func _process(_delta):
-	$HUD.update_score()
-	if Input.is_action_just_pressed("next"):
-		explanation()
+	if Input.is_action_just_pressed(action):
+			explanation()
+	if count == true:
+		score += 1
+		if score == 850:
+			$good_luck.show()
+		if score > 1000:
+			get_tree().change_scene("res://scenes/main_menu.tscn")
+		
 		
 func explanation():
 	current_explanation.hide()
 	if current_explanation == $Explanation5:
-		$MobTimer.start()
+		
 		return
-	if current_explanation == $StartLabel:
-		current_explanation = $Explanation1
 	elif current_explanation == $Explanation1:
 		current_explanation = $Explanation2
+		action = "defend"
 	elif current_explanation == $Explanation2:
 		current_explanation = $Explanation3
+		action = "power1"
+		$SchoolBackground._on_main_continuing()
+		$MobTimer.start()
+		count = true
 	elif current_explanation == $Explanation3:
 		current_explanation = $Explanation4
+		action = "power2"
 	elif current_explanation == $Explanation4:
 		current_explanation = $Explanation5
+		action = "left"
 	current_explanation.show()
-	
+
+
 
 func _on_HUD_boss_spawn():
 	# Spawn boss
@@ -61,7 +77,6 @@ func _on_HUD_boss_spawn():
 
 
 func game_over():
-	$Game_over.show()
 	$WaitTime.start()
 	set_process(false)
 	$MobTimer.stop()
@@ -71,4 +86,5 @@ func game_over():
 
 func _on_WaitTime_timeout():
 	get_tree().change_scene("res://scenes/main_menu.tscn")
+
 
