@@ -19,6 +19,7 @@ func _on_Broom_pressed():
 		emit_signal("swing")
 		$swing_timer.start()
 		$Broom.disabled = true
+		$Broom.modulate = Color(255, 0, 0)
 
 # Defensive Weapons
 
@@ -27,11 +28,14 @@ func _on_DustPan_pressed():
 		emit_signal("block")
 		$block_timer.start()
 		$DustPan.disabled = true
+		$DustPan.modulate = Color(255, 0, 0)
 
 
 func _on_swing_timer_timeout():
 	get_node("Broom").disabled = false
+	$Broom.modulate = Color("ffffff")
 
 
 func _on_block_timer_timeout():
 	get_node("DustPan").disabled = false
+	$DustPan.modulate = Color("ffffff")
